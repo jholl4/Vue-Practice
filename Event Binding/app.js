@@ -1,5 +1,3 @@
-const { computed } = require("vue");
-
 const app = Vue.createApp({
   data() {
     return {
@@ -7,14 +5,39 @@ const app = Vue.createApp({
       increment: 5,
       name: '',
       confirmedName: '',
+      // nameWatcherOutput: '',
+      lastName: '',
     };
+  },
+  watch: { // Whenever watched property changes, the matching watcher method will execute
+    counter(value) {
+      if (value > 50) {
+        this.counter = 0;
+      }
+    }
+    // name(value) { // could also accept a second argument, being the old value of the watched property
+    //   if (value === '') {
+    //     this.nameWatcherOutput = '';
+    //     return;
+    //   }else{
+    //     this.nameWatcherOutput = value + ' ' + this.lastName;
+    //   }
+    // },
+    // lastName(value) {
+    //   if (value === '') {
+    //     this.nameWatcherOutput = '';
+    //     return;
+    //   }else{
+    //     this.nameWatcherOutput = this.name + ' ' + value;
+    //   }
+    // }
   },
   computed: {
     fullName() {
-      if (this.name === '') {
+      if (this.name === '' || this.lastName === '') {
         return '';
       }else{
-        return this.name + ' ' + 'Holland';
+        return this.name + ' ' + this.lastName;
       }
     }
   },
@@ -36,6 +59,7 @@ const app = Vue.createApp({
     },
     resetInput() {
       this.name = '';
+      this.lastName = '';
       // this.confirmedName = '';
     },
   }
