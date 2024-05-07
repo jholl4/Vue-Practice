@@ -1,3 +1,5 @@
+const { computed } = require("vue");
+
 const app = Vue.createApp({
   data() {
     return {
@@ -6,6 +8,15 @@ const app = Vue.createApp({
       name: '',
       confirmedName: '',
     };
+  },
+  computed: {
+    fullName() {
+      if (this.name === '') {
+        return '';
+      }else{
+        return this.name + ' ' + 'Holland';
+      }
+    }
   },
   methods: {
     add(num) {
@@ -25,7 +36,7 @@ const app = Vue.createApp({
     },
     resetInput() {
       this.name = '';
-      this.confirmedName = '';
+      // this.confirmedName = '';
     },
   }
 });
