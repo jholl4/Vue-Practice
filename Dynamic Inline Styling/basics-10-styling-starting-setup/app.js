@@ -7,7 +7,15 @@ const app = Vue.createApp({
         }
     },
     computed: {
-
+        boxAClasses() {
+            return { active: this.boxASelected };
+        },
+        boxBClasses() {
+            return { active: this.boxBSelected };
+        },
+        boxCClasses() {
+            return { active: this.boxCSelected };
+        },
     },
     watch: {
 
@@ -16,13 +24,13 @@ const app = Vue.createApp({
         boxSelected(box) {
             switch (box) {
                 case 'A':
-                    this.boxASelected = true;
+                    this.boxASelected = !this.boxASelected;
                     break;
                 case 'B':
-                    this.boxBSelected = true;
+                    this.boxBSelected = !this.boxBSelected;
                     break;
                 case 'C':
-                    this.boxCSelected = true;
+                    this.boxCSelected = !this.boxCSelected;
                     break;
 
             }
