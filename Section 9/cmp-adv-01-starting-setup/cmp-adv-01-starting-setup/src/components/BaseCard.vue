@@ -1,7 +1,9 @@
 <template>
     <div>
         <header>
-            <slot name="head"></slot>
+            <slot name="head">
+                <h2>Default Header</h2>
+            </slot>
         </header>
         <slot></slot>
     </div>
@@ -9,7 +11,9 @@
 
 <script>
 export default {
-    props: [],
+    mounted() {
+        console.log(this.$slots); // property provided by vue for the slot data that this component received via slots
+    },
 }
 </script>
 
